@@ -22,13 +22,14 @@ export const projects = [
     cursorColor: "bg-orange-500"
   },
   {
-    title: "Campus Feedback System",
-    subtitle: "MERN-based feedback system with JWT auth",
-    description: "MERN-based feedback system with JWT auth, dynamic forms, admin dashboard, and RESTful API. Tested endpoints via Postman, wrote unit tests, and fixed defects for reliability.",
-    tags: ["Node.js", "React.js", "MongoDB", "Express"],
+    title: "Course AI",
+    subtitle: "AI-Powered Course Generator",
+    description: "An intelligent, multi-agent platform that builds complete course textbooks from scratch using an orchestrated pipeline of AI agents. Features a stateless, parallel architecture with a Self-Reflection Loop using Groq Llama 3.1.",
+    tags: ["Python", "FastAPI", "React", "Groq LLM", "BeautifulSoup"],
     status: "active",
     link: "#",
-    github: "#",
-    cursorColor: "bg-emerald-500"
+    image: "/Course AI.png",
+    github: "https://github.com/Soundar-rajan916/ai_course_crm",
+    cursorColor: "bg-purple-500"
   }
 ];
