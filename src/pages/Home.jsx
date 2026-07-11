@@ -170,28 +170,7 @@ export default function Home() {
         </motion.div>
 
 
-        {/* Currently Building */}
-        <motion.div variants={itemVariants} className="w-full flex justify-center pointer-events-auto">
-          <motion.div
-            whileHover={{ y: -5, scale: 1.01 }}
-            className="w-full max-w-[540px] bg-white/70 backdrop-blur-xl border border-gray-100 p-6 sm:p-8 rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 text-left flex flex-col sm:flex-row items-start sm:items-center gap-6"
-          >
-            <div className="w-14 h-14 rounded-2xl bg-blue-50/50 border border-blue-100 text-blue-600 flex items-center justify-center shrink-0 shadow-sm">
-              <BrainCircuit size={26} />
-            </div>
-            <div>
-              <div className="text-[11px] uppercase tracking-wider font-bold text-slate-400 mb-1.5">Currently Building</div>
-              <h3 className="text-[18px] font-bold text-slate-900 mb-3">AI Resume Analyzer</h3>
-              <div className="flex flex-wrap gap-2">
-                {["RAG", "LangChain", "FastAPI", "OpenAI"].map(tech => (
-                  <span key={tech} className="text-[12px] font-semibold text-slate-600 bg-slate-100/80 border border-slate-200/50 px-2.5 py-1 rounded-md">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
+
 
       </motion.div>
     </div>
