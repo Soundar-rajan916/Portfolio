@@ -6,8 +6,9 @@ export default function Experience() {
     <div className="w-full bg-transparent min-h-screen pt-16 pb-12 overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center md:text-left md:pl-[280px]">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">Changelog from my journey</h1>
-          <p className="text-slate-500">Here's a timeline of my journey.</p>
+          {/* <h1 className="text-3xl font-bold text-slate-900 mb-2">Changelog from my journey</h1> */}
+          {/* <p className="text-slate-500">Here's a timeline of my journey.</p> */}
+          <h1 className="text-3xl font-bold text-slate-900 mb-2">Work Experience</h1>
         </div>
 
         <ExperienceTimeline />
