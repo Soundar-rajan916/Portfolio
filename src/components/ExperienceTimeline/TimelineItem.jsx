@@ -9,9 +9,14 @@ export default function TimelineItem({ experience, index }) {
 
   return (
     <div ref={ref} className="relative w-full mb-12 md:mb-16 last:mb-0 pt-0">
-      <TimelineNode inView={inView} />
+      {/* <TimelineNode inView={inView} /> */}
       
       {/* Desktop Connector */}
+      {/* <div 
+        className="hidden md:block absolute top-[42px] left-[220px] h-[2px] z-10 -translate-y-1/2"
+        style={{ width: "60px", backgroundColor: "#3B82F6" }}
+      /> */}
+      {/*
       <motion.div 
         className="hidden md:block absolute top-[42px] left-[220px] h-[2px] z-10 -translate-y-1/2"
         initial={{ width: 0, backgroundColor: "#e2e8f0" }}
@@ -21,7 +26,13 @@ export default function TimelineItem({ experience, index }) {
         }}
         transition={{ duration: 0.4, delay: 0.1 }}
       />
+      */}
       {/* Mobile Connector */}
+      {/* <div 
+        className="md:hidden absolute top-[42px] left-6 h-[2px] z-10 -translate-y-1/2"
+        style={{ width: "24px", backgroundColor: "#3B82F6" }}
+      /> */}
+      {/*
       <motion.div 
         className="md:hidden absolute top-[42px] left-6 h-[2px] z-10 -translate-y-1/2"
         initial={{ width: 0, backgroundColor: "#e2e8f0" }}
@@ -31,26 +42,28 @@ export default function TimelineItem({ experience, index }) {
         }}
         transition={{ duration: 0.4, delay: 0.1 }}
       />
+      */}
 
       <div className="flex flex-col w-full items-start">
         
         {/* Left Side: Rich Date Info (Desktop) */}
         <div className="hidden md:flex flex-col items-end absolute left-0 top-[42px] -translate-y-1/2 w-[190px] pr-6 text-right z-20">
-          <motion.div
+          <div>
+          {/* <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-          >
+          > */}
             <div className="flex items-center justify-end gap-2 text-slate-800 font-semibold mb-1">
               <span>{experience.period}</span>
               <FiCalendar className="text-slate-400" />
             </div>
             <div className="flex items-center justify-end gap-2 text-slate-500 text-sm font-medium">
               <span>{experience.company}</span>
-              <FiBriefcase className="text-slate-400" />
             </div>
-          </motion.div>
+          {/* </motion.div> */}
+          </div>
         </div>
 
         {/* Right Side: Card & Mobile Date */}
@@ -67,13 +80,14 @@ export default function TimelineItem({ experience, index }) {
             </div>
           </div>
 
-          <motion.div
+          <div className="bg-white p-7 md:p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow duration-300 group relative z-20">
+          {/* <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="bg-white p-7 md:p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow duration-300 group relative z-20"
-          >
+          > */}
             <h3 className="text-xl md:text-2xl font-bold text-slate-900 leading-none">{experience.role}</h3>
             
             <p className="text-slate-600 mb-6 leading-relaxed text-[15px] mt-4">
@@ -98,7 +112,8 @@ export default function TimelineItem({ experience, index }) {
                 </span>
               ))}
             </div>
-          </motion.div>
+          {/* </motion.div> */}
+          </div>
         </div>
       </div>
     </div>

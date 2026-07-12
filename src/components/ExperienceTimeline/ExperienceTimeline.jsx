@@ -8,7 +8,7 @@ export default function ExperienceTimeline() {
 
   return (
     <div ref={containerRef} className="relative w-full max-w-5xl mx-auto py-10">
-      <ProgressLine containerRef={containerRef} />
+      {/* <ProgressLine containerRef={containerRef} /> */}
       
       <div className="relative z-10">
         {experience.map((item, index) => (

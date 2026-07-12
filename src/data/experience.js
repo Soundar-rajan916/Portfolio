@@ -13,17 +13,5 @@ export const experience = [
     ],
     tags: ["LLMs", "RAG", "AI Frameworks", "Prompt Engineering", "Testing"]
   },
-  {
-    id: 2,
-    period: "2023 - 2027",
-    role: "B.Tech in Artificial Intelligence and Data Science",
-    company: "Muthayammal Engineering College",
-    summary: "Pursuing Bachelor's degree with a current CGPA of 7.01.",
-    bullets: [
-      "Conducted a Git & GitHub workshop, introducing students to version control, repository management, and collaborative development.",
-      "Conducted a MERN Stack workshop teaching frontend with React, backend with Node.js/Express.js, and MongoDB.",
-      "Participated in SDG Hackathon (Attendance Verification System) and HackIndia Hackathon 2026 (AI Legal Assistant)."
-    ],
-    tags: ["AI", "Data Science", "Workshops", "Hackathons"]
-  }
+
 ];
