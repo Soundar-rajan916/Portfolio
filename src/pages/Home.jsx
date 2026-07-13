@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { socialLinks } from '../data/social';
 import { ArrowRight, Download, BrainCircuit } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
@@ -78,7 +79,7 @@ export default function Home() {
 
         {/* Heading */}
         <motion.div variants={itemVariants} className="mb-4">
-          <h1 className="text-5xl sm:text-[64px] font-bold text-slate-900 leading-[1.1] tracking-tight font-syne">
+          <h1 className="text-5xl sm:text-[64px] font-bold text-slate-900 leading-[1.1] tracking-tight">
             Hey, I'm Soundararajan
           </h1>
         </motion.div>
@@ -115,7 +116,7 @@ export default function Home() {
         {/* CTAs and Socials */}
         <motion.div variants={itemVariants} className="flex flex-col items-center gap-6 mb-20 w-full pointer-events-auto">
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <a href="#projects" className="w-full sm:w-auto">
+            <Link to="/projects" className="w-full sm:w-auto">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -123,7 +124,7 @@ export default function Home() {
               >
                 View Projects <ArrowRight size={18} />
               </motion.button>
-            </a>
+            </Link>
 
             <a href="/resume.pdf" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
               <motion.button
