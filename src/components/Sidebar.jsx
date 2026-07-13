@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
 import { Menu, X, Home, Navigation, Building2, User, Wrench, Mail } from 'lucide-react';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 import { socialLinks } from '../data/social';
@@ -7,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const toggle = () => setIsOpen(!isOpen);
 
   const [roleIndex, setRoleIndex] = useState(0);
@@ -19,25 +19,62 @@ export default function Sidebar() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'projects', 'experience', 'about', 'tools', 'contact'];
+      let current = '';
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            current = section;
+            break;
+          }
+        }
+      }
+      
+      if (current && current !== activeSection) {
+        setActiveSection(current);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeSection]);
+
   const navs = [
-    { name: 'Home', path: '/', icon: Home },
-    { name: 'Projects', path: '/projects', icon: Navigation },
-    { name: 'Experience', path: '/experience', icon: Building2 },
-    { name: 'About', path: '/about', icon: User },
-    { name: 'Tools', path: '/tools', icon: Wrench },
-    { name: 'Contact', path: '/contact', icon: Mail },
+    { name: 'Home', path: '#home', id: 'home', icon: Home },
+    { name: 'Projects', path: '#projects', id: 'projects', icon: Navigation },
+    { name: 'Experience', path: '#experience', id: 'experience', icon: Building2 },
+    { name: 'About', path: '#about', id: 'about', icon: User },
+    { name: 'Tools', path: '#tools', id: 'tools', icon: Wrench },
+    { name: 'Contact', path: '#contact', id: 'contact', icon: Mail },
   ];
+
+  const getLinkClasses = (id) => {
+    const isActive = activeSection === id;
+    return `flex items-center gap-3 px-4 py-3 rounded-xl text-base md:text-[15px] font-medium transition-all border ${
+      isActive 
+        ? 'bg-[#1a1a1a] text-white border-transparent hover:bg-transparent hover:text-slate-900 hover:border-slate-900' 
+        : 'border-transparent text-slate-900 hover:bg-slate-200'
+    }`;
+  };
 
   return (
     <>
       {/* Mobile Top Bar */}
       <div className="md:hidden flex items-center justify-between px-4 h-16 border-b border-gray-100 bg-[#f8f9fa] sticky top-0 z-50">
-        <Link to="/" className="flex items-center space-x-2 group">
+        <a href="#home" className="flex items-center space-x-2 group">
           <div className="w-8 h-8 rounded-full bg-slate-200 overflow-hidden flex items-center justify-center">
             <img src="/dp.png" alt="Soundararajan" className="w-full h-full object-cover" />
           </div>
           <span className="font-semibold text-slate-900">Soundararajan</span>
-        </Link>
+        </a>
         <button onClick={toggle} className="text-slate-500 hover:text-slate-900">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -50,21 +87,15 @@ export default function Sidebar() {
             {navs.map((nav) => {
               const Icon = nav.icon;
               return (
-                <NavLink
+                <a
                   key={nav.name}
-                  to={nav.path}
+                  href={nav.path}
                   onClick={() => setIsOpen(false)}
-                  className={({ isActive }) =>
-                    `flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all border ${
-                      isActive 
-                        ? 'bg-[#1a1a1a] text-white border-transparent hover:bg-transparent hover:text-slate-900 hover:border-slate-900' 
-                        : 'border-transparent text-slate-900 hover:bg-slate-200'
-                    }`
-                  }
+                  className={getLinkClasses(nav.id)}
                 >
                   <Icon size={18} />
                   <span>{nav.name}</span>
-                </NavLink>
+                </a>
               );
             })}
 
@@ -78,8 +109,8 @@ export default function Sidebar() {
       )}
 
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 border-r border-gray-100 bg-[#f8f9fa] py-8 px-6">
-        <Link to="/" className="flex items-center space-x-3 mb-10 group">
+      <aside className="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 border-r border-gray-100 bg-[#f8f9fa] py-8 px-6 z-40">
+        <a href="#home" className="flex items-center space-x-3 mb-10 group">
           <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden flex-shrink-0 flex items-center justify-center">
             <img src="/dp.png" alt="Soundararajan" className="w-full h-full object-cover" />
           </div>
@@ -100,26 +131,20 @@ export default function Sidebar() {
               </AnimatePresence>
             </div>
           </div>
-        </Link>
+        </a>
 
         <nav className="flex flex-col space-y-1 flex-grow">
           {navs.map((nav) => {
             const Icon = nav.icon;
             return (
-              <NavLink
+              <a
                 key={nav.name}
-                to={nav.path}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 text-[15px] font-medium px-4 py-3 rounded-xl transition-all border ${
-                    isActive 
-                      ? 'bg-[#1a1a1a] text-white border-transparent hover:bg-transparent hover:text-slate-900 hover:border-slate-900' 
-                      : 'border-transparent text-slate-900 hover:bg-slate-200'
-                  }`
-                }
+                href={nav.path}
+                className={getLinkClasses(nav.id)}
               >
                 <Icon size={18} strokeWidth={2} />
                 <span>{nav.name}</span>
-              </NavLink>
+              </a>
             );
           })}
         </nav>
